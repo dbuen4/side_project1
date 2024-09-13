@@ -139,33 +139,6 @@ void displayIncompleteLadder(char** ladderWords, int n) {
 }
 
 
-//-------------------------------------------------------------------
-// TODO - Task X: write the displayCompleteLadder() function, 
-//      which should display the C-strings in the [ladderWords] array 
-//      with the first word at the bottom of the ladder, and each 
-//      successive C-string one rung higher on the ladder. In between
-//      each ladder rung, display the symbol '^' to signify the 
-//      character that changes between the two rungs of the ladder. 
-//      The ladder should be displayed with an indentation of two 
-//      whitespaces to the left of every word;
-//      Ex: if the start word is "data" and final word is "code" 
-//          then the output display for a complete ladder should be  
-//          as follows (where the quotation marks are NOT a part of  
-//          the actual display):
-//              "  code"
-//              "    ^ "
-//              "  cove"
-//              "   ^  "
-//              "  cave"
-//              "  ^   "
-//              "  gave"
-//              "    ^ "
-//              "  gate"
-//              "  ^   "
-//              "  date"
-//              "     ^"
-//              "  data" 
-//-------------------------------------------------------------------
 void displayCompleteLadder(char** ladderWords, int n) {
     // Display the ladder in reverse order
     for (int i = n - 1; i >= 0; i--) {
@@ -206,35 +179,8 @@ int main(int argc, char* argv[]) {
     char startWord[30] = "notAword";
     char finalWord[30] = "notValid"; 
 
-    //-------------------------------------------------------------------
-    // TODO - Task XII: handle command-line arguments
-    // command-line arguments:
-    //  [-n wordLen] = sets word length for word ladder;
-    //                 if [wordLen] is not a valid input 
-    //                 (cannot be less than 2 or greater than 20),
-    //                 or missing from command-line arguments, 
-    //                 then let user set it using interactive user input
-    // [-m maxLadder] = sets maximum word ladder height;
-    //                  [maxLadder] must be at least 2;
-    //                  if [maxLadder] is invalid or missing from 
-    //                  command-line arguments, then let user set it 
-    //                  using interactive user input
-    // [-d dictFile] = sets dictionary file;
-    //                 if [dictFile] is invalid (file not found) or 
-    //                 missing from command-line arguments, then let
-    //                 user set it using interactive user input
-    // [-s startWord] = sets the starting word;
-    //                  if [startWord] is invalid 
-    //                  (not in dictionary or incorrect length) or 
-    //                  missing from command-line arguments, then let
-    //                  user set it using interactive user input
-    // [-f finalWord] = sets the final word;
-    //                  if [finalWord] is invalid  
-    //                  (not in dictionary or incorrect length) or 
-    //                  missing from command-line arguments, then let
-    //                  user set it using interactive user input
-    //-------------------------------------------------------------------
-
+   
+//command line args
      for (int i = 1; i < argc; i += 2) {
         if (strcmp(argv[i], "-n") == 0) {
             // Set word length
@@ -302,9 +248,6 @@ int main(int argc, char* argv[]) {
     }
     fclose(fileTry);
     
-    // build the [words] array, a heap-allocated array of C-strings
-    // where the words are a read-in from the dictionary file
-    // and only those words of the desired length [wordLen] 
 
     int numWords = 0; // initially, no words in the array
     int maxWords = 4; // initially, capacity = 4
@@ -419,17 +362,7 @@ int main(int argc, char* argv[]) {
         printf("Word Ladder height = %d. \n", ladderHeight);
         printf("Can you complete the Word Ladder next time??? \n");
     }
-    
-    
-    //-------------------------------------------------------------------
-    // TODO - Task XI: free all heap-allocated memory to avoid potential 
-    //                  memory leaks. Since the word length for the word 
-    //                  ladder is variable (i.e. set by a command-line 
-    //                  argument or interactive user-input) any array
-    //                  whose size depends on the word length should be
-    //                  dynamically heap-allocated, and thus, must be
-    //                  tracked and freed before program termination
-    //-------------------------------------------------------------------
+
 
  // Free dynamically allocated memory for ladder words
 for (int i = 0; i < ladderHeight; i++) {
